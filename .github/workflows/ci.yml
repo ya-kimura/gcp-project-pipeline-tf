@@ -21,3 +21,26 @@ jobs:
         echo "::set-output name=folders::$content"
     outputs:
       folders: ${{ steps.folders.outputs.folders }}
+
+  fmt:
+    runs-on: ubuntu-20.04
+    needs: foldersChanged
+    name: fmt
+    if: ${{ needs.foldersChanged.outputs.folders != '[]' && needs.foldersChanged.outputs.folders != '' }}
+    strategy:
+      matrix:
+        folder: ${{ fromJson(needs.foldersChanged.outputs.folders) }}
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout code
+
+      - uses: hashicorp/setup-terraform@v1
+        name: setup terraform
+        with:
+          terraform_version: 1.0.8
+
+      - name: run terraform fmt
+        run: |
+          cd ${{ matrix.folder }}
+          terraform fmt -check=true -diff
+  
