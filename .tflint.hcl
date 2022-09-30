@@ -10,7 +10,7 @@ plugin "google" {
     deep_check = false
 }
 
- Disallow // comments in favor of #.
+# Disallow // comments in favor of #.
 rule "terraform_comment_syntax" {
   enabled = true
 }
