@@ -1,12 +1,5 @@
-config {
-  module = true
-  force = false
-  disabled_by_default = true
-}
-
 plugin "google" {
     // Plugin common attributes
-    enabled = true
     deep_check = false
 }
 
