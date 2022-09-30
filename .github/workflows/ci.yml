@@ -1,0 +1,23 @@
+name: Pull request workflow
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  foldersChanged:
+    runs-on: ubuntu-20.04
+    steps:
+     - id: file_changes
+       uses: trilom/file-changes-action@1.2.4
+
+     - name: Get folders
+       id: folders
+       run: |
+        content=$(jq ".[]" $HOME/files.json | grep ".tf" | sed 's/\/[^/]*$/\//' |  sed -e 's/^"//' -e 's/"$//' | grep -v '\..*' | uniq | jq -R -s -c 'split("\n")[:-1]')
+        echo "::set-output name=folders::$content"
+    outputs:
+      folders: ${{ steps.folders.outputs.folders }}
