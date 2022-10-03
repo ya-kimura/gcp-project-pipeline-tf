@@ -6,11 +6,6 @@ plugin "google" {
     source  = "github.com/terraform-linters/tflint-ruleset-google"
 }
 
-rule "google_composer_environment_invalid_machine_type" {
-  enabled = true
-}
-
-
 # Disallow // comments in favor of #.
 rule "terraform_comment_syntax" {
   enabled = true
