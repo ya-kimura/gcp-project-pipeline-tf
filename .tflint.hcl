@@ -1,5 +1,6 @@
 plugin "google" {
     // Plugin common attributes
+    enabled    = true
     deep_check = false
 }
 
