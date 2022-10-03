@@ -101,3 +101,17 @@ jobs:
        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
        with:
          github_token: ${{ github.token }}
+
+  commitLint:
+    runs-on: ubuntu-20.04
+    needs: [TFLint, fmt]
+    if: |
+      always() &&
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled')
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: wagoid/commitlint-github-action@v5
