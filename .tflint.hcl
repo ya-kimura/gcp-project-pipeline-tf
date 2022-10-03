@@ -2,6 +2,8 @@ plugin "google" {
     // Plugin common attributes
     enabled    = true
     deep_check = false
+    version = "0.20.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-google"
 }
 
 # Disallow // comments in favor of #.
