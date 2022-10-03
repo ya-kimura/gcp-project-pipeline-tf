@@ -45,7 +45,7 @@ rule "terraform_naming_convention" {
 
 # Require that all providers have version constraints through required_providers.
 rule "terraform_required_providers" {
-  enabled = false
+  enabled = true
 }
 
 # Disallow terraform declarations without require_version.
