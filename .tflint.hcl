@@ -1,10 +1,15 @@
 plugin "google" {
     // Plugin common attributes
     enabled    = true
-    deep_check = false
+    deep_check = true
     version = "0.20.0"
     source  = "github.com/terraform-linters/tflint-ruleset-google"
 }
+
+rule "google_composer_environment_invalid_machine_type" {
+  enabled = true
+}
+
 
 # Disallow // comments in favor of #.
 rule "terraform_comment_syntax" {
@@ -23,7 +28,7 @@ rule "terraform_deprecated_interpolation" {
 
 # Disallow output declarations without description.
 rule "terraform_documented_outputs" {
-  enabled = false
+  enabled = true
 }
 
 # Disallow variable declarations without description.
@@ -55,7 +60,7 @@ rule "terraform_required_version" {
 
 # Ensure that a module complies with the Terraform Standard Module Structure
 rule "terraform_standard_module_structure" {
-  enabled = false
+  enabled = true
 }
 
 # Disallow variable declarations without type.
@@ -65,5 +70,5 @@ rule "terraform_typed_variables" {
 
 # Disallow variables, data sources, and locals that are declared but never used.
 rule "terraform_unused_declarations" {
-  enabled = false
+  enabled = true
 }
