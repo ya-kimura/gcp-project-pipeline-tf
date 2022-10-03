@@ -104,7 +104,7 @@ jobs:
 
   commitLint:
     runs-on: ubuntu-20.04
-    needs: [TFLint, fmt]
+    needs: [fmt]
     if: |
       always() &&
       !contains(needs.*.result, 'failure') &&
