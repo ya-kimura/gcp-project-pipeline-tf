@@ -43,7 +43,7 @@ jobs:
       - uses: terraform-linters/setup-tflint@v2
         name: Setup TFLint
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GOOGLECLOUD_JSON_SECRET}}
 
       - uses: hashicorp/setup-terraform@v1
         name: setup terraform
@@ -100,7 +100,7 @@ jobs:
      - name: tfsec
        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
        with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
+         github_token: ${{ secrets.GOOGLECLOUD_JSON_SECRET }}
 
   commitLint:
     runs-on: ubuntu-20.04
